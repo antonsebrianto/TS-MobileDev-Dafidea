@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:test_case_dafidea/models/API/post_api.dart';
 import 'package:test_case_dafidea/models/post_model.dart';
 
@@ -40,9 +41,19 @@ class PostViewModel extends ChangeNotifier {
       _post = post;
       _state = DataState.loaded;
       notifyListeners();
+      Fluttertoast.showToast(
+        msg: 'Post berhasil ditambahkan',
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.green,
+      );
     } catch (e) {
       _state = DataState.error;
+      notifyListeners();
+      Fluttertoast.showToast(
+        msg: 'Gagal menambahkan post',
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+      );
     }
-    notifyListeners();
   }
 }

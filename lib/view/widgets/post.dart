@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:test_case_dafidea/models/API/post_api.dart';
 import 'package:test_case_dafidea/models/post_model.dart';
+import 'package:test_case_dafidea/view/detail_post_view.dart';
 
 class PostWidgets extends StatefulWidget {
   const PostWidgets({Key? key}) : super(key: key);
@@ -94,14 +95,13 @@ class _PostWidgetsState extends State<PostWidgets> {
                       //     .read<CommentViewModel>()
                       //     .getComments(post.id ?? 0);
                       // if (mounted) {
-                      //   Navigator.push(
-                      //       context,
-                      //       MaterialPageRoute(
-                      //           builder: (context) => DetailPostPage(
-                      //                 post: post,
-                      //                 index: index,
-                      //                 isPopuler: true,
-                      //               )));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DetailPostPage(
+                                    post: posts[index],
+                                    index: index,
+                                  )));
                       // }
                     },
                     child: Stack(

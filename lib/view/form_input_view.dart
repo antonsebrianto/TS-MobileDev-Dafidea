@@ -47,13 +47,13 @@ class _FormInputPageState extends State<FormInputPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Success'),
+          title: const Text('Success'),
           content: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('Post created successfully.'),
-              SizedBox(height: 8),
+              const Text('Post created successfully.'),
+              const SizedBox(height: 8),
               Text('Title: ${post.title}'),
               Text('Body: ${post.body}'),
             ],
@@ -63,7 +63,27 @@ class _FormInputPageState extends State<FormInputPage> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('OK'),
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void showFailedDialog(BuildContext context, PostModel post) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Failed'),
+          content: Text('Failed to create post'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('OK'),
             ),
           ],
         );
@@ -79,7 +99,7 @@ class _FormInputPageState extends State<FormInputPage> {
           key: formKey,
           child: Column(
             children: [
-              HeaderWidgets(
+              const HeaderWidgets(
                 title: 'Create Post',
                 subtitle: 'Create your own post',
                 back: false,
@@ -177,6 +197,8 @@ class _FormInputPageState extends State<FormInputPage> {
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Body must be filled';
+                        } else if (value.length < 20) {
+                          return 'Body must be at least 20 characters';
                         }
                         return null;
                       },
@@ -204,60 +226,64 @@ class _FormInputPageState extends State<FormInputPage> {
                                       .inputPost(titleController.text,
                                           bodyController.text);
 
-                                  if (mounted) {
-                                    final createdPost =
-                                        Provider.of<PostViewModel>(context,
-                                                listen: false)
-                                            .post;
-                                    showSuccessDialog(context, createdPost);
-                                    // showDialog(
-                                    //     context: context,
-                                    //     builder: (BuildContext context) {
-                                    //       return AlertDialog(
-                                    //         title: Text('Post Created'),
-                                    //         content: Column(
-                                    //           crossAxisAlignment:
-                                    //               CrossAxisAlignment.start,
-                                    //           mainAxisSize: MainAxisSize.min,
-                                    //           children: [
-                                    //             Text(
-                                    //             'ID: ${createdPost ?? 0}'),
-                                    //             Text(
-                                    //                 'Title: ${createdPost?.title}'),
-                                    //             Text(
-                                    //                 'Body: ${createdPost.body}'),
-                                    //           ],
-                                    //         ),
-                                    //         actions: [
-                                    //           TextButton(
-                                    //             onPressed: () {
-                                    //               Navigator.of(context).pop();
-                                    //             },
-                                    //             child: Text('OK'),
-                                    //           ),
-                                    //         ],
-                                    //       );
-                                    //     });
-                                    // showDialog(
-                                    //     context: context,
-                                    //     builder: (BuildContext context, PostModel post) {
-                                    //       return AlertDialog(
-                                    //         title: Text('Success'),
-                                    //         content: Column(
-                                    //           children: [
-                                    //             Text(
-                                    //                 'Post created successfully.'),
-                                    //             // Text()
-                                    //           ],
-                                    //         ),
-                                    //         actions: [
-                                    //           TextButton(
-                                    //               onPressed: () {},
-                                    //               child: Text('OK')),
-                                    //         ],
-                                    //       );
-                                    //     });
-                                  }
+                                  // if (mounted) {
+                                  //   final createdPost =
+                                  //       Provider.of<PostViewModel>(context,
+                                  //               listen: false)
+                                  //           .post;
+                                  //   if (createdPost.isNull) {
+                                  //     showSuccessDialog(context, createdPost);
+                                  //   } else {
+                                  //     showFailedDialog(context, createdPost);
+                                  //   }
+                                  // showDialog(
+                                  //     context: context,
+                                  //     builder: (BuildContext context) {
+                                  //       return AlertDialog(
+                                  //         title: Text('Post Created'),
+                                  //         content: Column(
+                                  //           crossAxisAlignment:
+                                  //               CrossAxisAlignment.start,
+                                  //           mainAxisSize: MainAxisSize.min,
+                                  //           children: [
+                                  //             Text(
+                                  //             'ID: ${createdPost ?? 0}'),
+                                  //             Text(
+                                  //                 'Title: ${createdPost?.title}'),
+                                  //             Text(
+                                  //                 'Body: ${createdPost.body}'),
+                                  //           ],
+                                  //         ),
+                                  //         actions: [
+                                  //           TextButton(
+                                  //             onPressed: () {
+                                  //               Navigator.of(context).pop();
+                                  //             },
+                                  //             child: Text('OK'),
+                                  //           ),
+                                  //         ],
+                                  //       );
+                                  //     });
+                                  // showDialog(
+                                  //     context: context,
+                                  //     builder: (BuildContext context, PostModel post) {
+                                  //       return AlertDialog(
+                                  //         title: Text('Success'),
+                                  //         content: Column(
+                                  //           children: [
+                                  //             Text(
+                                  //                 'Post created successfully.'),
+                                  //             // Text()
+                                  //           ],
+                                  //         ),
+                                  //         actions: [
+                                  //           TextButton(
+                                  //               onPressed: () {},
+                                  //               child: Text('OK')),
+                                  //         ],
+                                  //       );
+                                  //     });
+                                  // }
                                   // Navigator.pushAndRemoveUntil(
                                   //   context,
                                   //   PageRouteBuilder(

@@ -53,21 +53,20 @@ class _ProfilePageState extends State<ProfilePage> {
                 margin: const EdgeInsets.all(21),
                 height: 130,
                 width: 130,
-                child: Stack(
+                child: const Stack(
                   children: [
                     CircleAvatar(
                       radius: 70,
                       backgroundColor: AppTheme.white,
                       child: ClipPath(
-                        clipper: const ShapeBorderClipper(
-                          shape: CircleBorder(),
-                        ),
-                        child: Image.asset(
-                          'lib/assets/foto.png',
-                          fit: BoxFit.cover,
-                          width: double.infinity,
-                        ),
-                      ),
+                          clipper: ShapeBorderClipper(
+                            shape: CircleBorder(),
+                          ),
+                          child: Icon(
+                            Icons.person,
+                            color: AppTheme.gray_3,
+                            size: 120,
+                          )),
                     ),
                   ],
                 ),
