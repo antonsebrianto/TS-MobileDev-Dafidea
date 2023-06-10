@@ -30,6 +30,68 @@ class _ProfilePageState extends State<ProfilePage> {
     // ipkController.text = '3,85';
   }
 
+  void logout() async {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(
+            'Are you sure want to logout ?',
+            style: AppTextStyle.poppinsTextStyle(
+              fontSize: 15,
+              fontsWeight: FontWeight.w700,
+              color: AppTheme.black,
+            ),
+          ),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  'Cancel',
+                  style: AppTextStyle.poppinsTextStyle(
+                    fontSize: 15,
+                    fontsWeight: FontWeight.w500,
+                    color: AppTheme.primaryTheme,
+                  ),
+                )),
+            TextButton(
+                onPressed: () async {
+                  await Provider.of<UserViewModel>(context, listen: false)
+                      .signOut();
+                  if (mounted) {
+                    Navigator.pushReplacement(
+                      context,
+                      PageRouteBuilder(
+                        pageBuilder: (context, animation1, animation2) =>
+                            const LoginPage(),
+                        transitionsBuilder:
+                            (context, animation1, animation2, child) {
+                          return FadeTransition(
+                              opacity: animation1, child: child);
+                        },
+                        transitionDuration: const Duration(milliseconds: 300),
+                      ),
+                    );
+                  }
+                },
+                child: Text(
+                  'OK',
+                  style: AppTextStyle.poppinsTextStyle(
+                    fontSize: 15,
+                    fontsWeight: FontWeight.w500,
+                    color: AppTheme.primaryTheme,
+                  ),
+                ))
+          ],
+        );
+      },
+    );
+
+    // Navigator.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserViewModel>(context).user;
@@ -147,26 +209,27 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: const Text('Edit Profile'),
               ),
               OutlinedButton(
-                onPressed: () async {
+                onPressed: () {
                   // await Provider.of<UserViewModel>(context, listen: false)
                   //     .logout();
-                  await Provider.of<UserViewModel>(context, listen: false)
-                      .signOut();
-                  if (mounted) {
-                    Navigator.pushReplacement(
-                      context,
-                      PageRouteBuilder(
-                        pageBuilder: (context, animation1, animation2) =>
-                            const LoginPage(),
-                        transitionsBuilder:
-                            (context, animation1, animation2, child) {
-                          return FadeTransition(
-                              opacity: animation1, child: child);
-                        },
-                        transitionDuration: const Duration(milliseconds: 300),
-                      ),
-                    );
-                  }
+                  logout();
+                  // await Provider.of<UserViewModel>(context, listen: false)
+                  //     .signOut();
+                  // if (mounted) {
+                  //   Navigator.pushReplacement(
+                  //     context,
+                  //     PageRouteBuilder(
+                  //       pageBuilder: (context, animation1, animation2) =>
+                  //           const LoginPage(),
+                  //       transitionsBuilder:
+                  //           (context, animation1, animation2, child) {
+                  //         return FadeTransition(
+                  //             opacity: animation1, child: child);
+                  //       },
+                  //       transitionDuration: const Duration(milliseconds: 300),
+                  //     ),
+                  //   );
+                  // }
                 },
                 style: ElevatedButton.styleFrom(
                     side: const BorderSide(color: AppTheme.primaryTheme),

@@ -52,6 +52,78 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
     super.dispose();
   }
 
+  void editProfile() async {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(
+            'Are you sure want to edit your profile ?',
+            style: AppTextStyle.poppinsTextStyle(
+              fontSize: 15,
+              fontsWeight: FontWeight.w700,
+              color: AppTheme.black,
+            ),
+          ),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  'Cancel',
+                  style: AppTextStyle.poppinsTextStyle(
+                    fontSize: 15,
+                    fontsWeight: FontWeight.w500,
+                    color: AppTheme.primaryTheme,
+                  ),
+                )),
+            TextButton(
+                onPressed: () async {
+                  await Provider.of<UserViewModel>(context, listen: false)
+                      .updateUser(
+                          emailController.text.isEmpty
+                              ? Provider.of<UserViewModel>(context,
+                                      listen: false)
+                                  .user
+                                  .email
+                                  .toString()
+                              : emailController.text,
+                          nameController.text.isEmpty
+                              ? Provider.of<UserViewModel>(context,
+                                      listen: false)
+                                  .user
+                                  .name
+                                  .toString()
+                              : nameController.text,
+                          genderController.text.isEmpty
+                              ? Provider.of<UserViewModel>(context,
+                                      listen: false)
+                                  .user
+                                  .gender
+                                  .toString()
+                              : genderController.text);
+
+                  if (mounted) {
+                    await Provider.of<UserViewModel>(context, listen: false)
+                        .getUser();
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                  }
+                },
+                child: Text(
+                  'OK',
+                  style: AppTextStyle.poppinsTextStyle(
+                    fontSize: 15,
+                    fontsWeight: FontWeight.w500,
+                    color: AppTheme.primaryTheme,
+                  ),
+                ))
+          ],
+        );
+      },
+    );
+  }
   // void showSuccessDialog(BuildContext context, PostModel post) {
   //   showDialog(
   //     context: context,
@@ -235,8 +307,9 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                             disabledBackgroundColor: AppTheme.disabled,
                           ),
                           onPressed: isButtonActive
-                              ? () async {
+                              ? () {
                                   if (formKey.currentState!.validate()) {
+                                    editProfile();
                                     // if (emailController.text.isEmpty) {
                                     //   await Provider.of<UserViewModel>(context,
                                     //           listen: false)
@@ -261,40 +334,6 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                                     //     Provider.of<PostViewModel>(context,
                                     //         listen: false);
                                     // final createdPost =
-                                    await Provider.of<UserViewModel>(context,
-                                            listen: false)
-                                        .updateUser(
-                                            emailController.text.isEmpty
-                                                ? Provider.of<UserViewModel>(
-                                                        context,
-                                                        listen: false)
-                                                    .user
-                                                    .email
-                                                    .toString()
-                                                : emailController.text,
-                                            nameController.text.isEmpty
-                                                ? Provider.of<UserViewModel>(
-                                                        context,
-                                                        listen: false)
-                                                    .user
-                                                    .name
-                                                    .toString()
-                                                : nameController.text,
-                                            genderController.text.isEmpty
-                                                ? Provider.of<UserViewModel>(
-                                                        context,
-                                                        listen: false)
-                                                    .user
-                                                    .gender
-                                                    .toString()
-                                                : genderController.text);
-
-                                    if (mounted) {
-                                      await Provider.of<UserViewModel>(context,
-                                              listen: false)
-                                          .getUser();
-                                      Navigator.pop(context);
-                                    }
                                   }
                                 }
                               : null,

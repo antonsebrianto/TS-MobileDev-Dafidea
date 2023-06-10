@@ -42,53 +42,18 @@ class _FormInputPageState extends State<FormInputPage> {
     super.dispose();
   }
 
-  void showSuccessDialog(BuildContext context, PostModel post) {
+  void loading() async {
     showDialog(
       context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Success'),
-          content: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text('Post created successfully.'),
-              const SizedBox(height: 8),
-              Text('Title: ${post.title}'),
-              Text('Body: ${post.body}'),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('OK'),
-            ),
-          ],
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
         );
       },
     );
-  }
-
-  void showFailedDialog(BuildContext context, PostModel post) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Failed'),
-          content: Text('Failed to create post'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
+    await Provider.of<PostViewModel>(context, listen: false)
+        .inputPost(titleController.text, bodyController.text);
+    Navigator.pop(context);
   }
 
   @override
@@ -221,10 +186,11 @@ class _FormInputPageState extends State<FormInputPage> {
                                   //     Provider.of<PostViewModel>(context,
                                   //         listen: false);
                                   // final createdPost =
-                                  await Provider.of<PostViewModel>(context,
-                                          listen: false)
-                                      .inputPost(titleController.text,
-                                          bodyController.text);
+                                  loading();
+                                  // await Provider.of<PostViewModel>(context,
+                                  //         listen: false)
+                                  //     .inputPost(titleController.text,
+                                  //         bodyController.text);
 
                                   // if (mounted) {
                                   //   final createdPost =

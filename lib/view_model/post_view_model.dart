@@ -42,7 +42,7 @@ class PostViewModel extends ChangeNotifier {
       _state = DataState.loaded;
       notifyListeners();
       Fluttertoast.showToast(
-        msg: 'Post berhasil ditambahkan',
+        msg: 'Post created successfully',
         gravity: ToastGravity.BOTTOM,
         backgroundColor: Colors.green,
       );
@@ -50,7 +50,7 @@ class PostViewModel extends ChangeNotifier {
       _state = DataState.error;
       notifyListeners();
       Fluttertoast.showToast(
-        msg: 'Gagal menambahkan post',
+        msg: 'Failed to created post',
         gravity: ToastGravity.BOTTOM,
         backgroundColor: Colors.red,
       );

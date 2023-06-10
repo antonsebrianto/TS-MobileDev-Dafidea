@@ -27,7 +27,7 @@ class PostAPI {
   Future<PostModel> inputPost(String title, String body) async {
     try {
       final response =
-          await dio.post("https://gorest.co.in/public/v2/users/1698/posts",
+          await dio.post("https://gorest.co.in/public/v2/users/2731908/posts",
               options: Options(headers: {
                 'Content-Type': 'application/json',
                 'Authorization':

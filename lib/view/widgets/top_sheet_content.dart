@@ -20,7 +20,7 @@ class TopSheetContent extends StatelessWidget {
     return Stack(
       children: [
         Hero(
-            tag: 'animasi1${post.id}',
+            tag: 'animasi${post.id}',
             child: Image.asset(
               'lib/assets/foto.png',
               fit: BoxFit.cover,

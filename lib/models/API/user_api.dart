@@ -4,7 +4,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:test_case_dafidea/models/user_model.dart';
 
 class UserAPI {
-  static const String url = "https://gorest.co.in/public/v2/users/1697";
+  static const String url = "https://gorest.co.in/public/v2/users/2731908";
 
   final Dio dio = Dio();
   final FirebaseAuth auth = FirebaseAuth.instance;

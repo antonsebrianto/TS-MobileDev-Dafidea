@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:test_case_dafidea/models/post_model.dart';
+import 'package:test_case_dafidea/theme/constant.dart';
 
 class BottomSheetContent extends StatelessWidget {
   final double height;
@@ -26,10 +27,15 @@ class BottomSheetContent extends StatelessWidget {
           children: <Widget>[
             Text(
               post.title ?? '',
-              style: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.deepOrange),
+              style: AppTextStyle.poppinsTextStyle(
+                fontSize: 15,
+                fontsWeight: FontWeight.w700,
+                color: AppTheme.primaryTheme,
+              ),
+              //  const TextStyle(
+              //     fontSize: 15,
+              //     fontWeight: FontWeight.bold,
+              //     color: Colors.deepOrange),
             ),
             // const SizedBox(
             //   height: 12,
@@ -66,10 +72,11 @@ class BottomSheetContent extends StatelessWidget {
                 ),
                 Text(
                   post.userId.toString(),
-                  style: const TextStyle(
-                      fontSize: 14,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
+                  style: AppTextStyle.poppinsTextStyle(
+                    fontSize: 14,
+                    fontsWeight: FontWeight.w600,
+                    color: AppTheme.black,
+                  ),
                 ),
               ],
             ),
@@ -78,8 +85,11 @@ class BottomSheetContent extends StatelessWidget {
             ),
             Text(
               post.body ?? '',
-              style: const TextStyle(
-                  color: Colors.black54, fontSize: 16.5, height: 1.4),
+              style: AppTextStyle.poppinsTextStyle(
+                fontSize: 14,
+                fontsWeight: FontWeight.w400,
+                color: AppTheme.black_3,
+              ),
               textAlign: TextAlign.left,
             ),
           ],

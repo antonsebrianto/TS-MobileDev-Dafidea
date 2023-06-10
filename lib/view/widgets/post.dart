@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:test_case_dafidea/models/API/post_api.dart';
 import 'package:test_case_dafidea/models/post_model.dart';
+import 'package:test_case_dafidea/theme/constant.dart';
 import 'package:test_case_dafidea/view/detail_post_view.dart';
 
 class PostWidgets extends StatefulWidget {
@@ -109,7 +110,7 @@ class _PostWidgetsState extends State<PostWidgets> {
                         Row(
                           children: <Widget>[
                             Hero(
-                              tag: 'animasi2${posts[index].id}',
+                              tag: 'animasi${posts[index].id}',
                               child: Container(
                                 margin:
                                     const EdgeInsets.only(top: 4, bottom: 4),
@@ -135,10 +136,11 @@ class _PostWidgetsState extends State<PostWidgets> {
                                         MediaQuery.of(context).size.width / 1.5,
                                     child: Text(
                                       posts[index].title ?? '',
-                                      style: const TextStyle(
-                                          color: Colors.deepOrange,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w800),
+                                      style: AppTextStyle.poppinsTextStyle(
+                                        fontSize: 15,
+                                        fontsWeight: FontWeight.w700,
+                                        color: AppTheme.primaryTheme,
+                                      ),
                                       maxLines: 5,
                                       overflow: TextOverflow.ellipsis,
                                     ),
@@ -148,10 +150,11 @@ class _PostWidgetsState extends State<PostWidgets> {
                                   ),
                                   Text(
                                     posts[index].userId.toString(),
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w800,
-                                        fontSize: 14),
+                                    style: AppTextStyle.poppinsTextStyle(
+                                      fontSize: 14,
+                                      fontsWeight: FontWeight.w600,
+                                      color: AppTheme.black,
+                                    ),
                                   ),
                                 ],
                               ),
