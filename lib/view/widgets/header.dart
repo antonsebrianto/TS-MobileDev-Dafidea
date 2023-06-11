@@ -44,7 +44,6 @@ class HeaderWidgets extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        // 'Hi, Anton',
                         title,
                         style: AppTextStyle.poppinsTextStyle(
                             color: AppTheme.white,
@@ -52,7 +51,6 @@ class HeaderWidgets extends StatelessWidget {
                             fontsWeight: FontWeight.w700),
                       ),
                       Text(
-                        // 'Find topics that you like to read',
                         subtitle,
                         style: AppTextStyle.poppinsTextStyle(
                           color: AppTheme.white,
@@ -105,7 +103,6 @@ class HeaderWidgets extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 20, top: 28),
                       child: Text(
-                        // 'Hi, Anton',
                         title,
                         style: AppTextStyle.poppinsTextStyle(
                             color: AppTheme.white,
@@ -116,7 +113,6 @@ class HeaderWidgets extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 20),
                       child: Text(
-                        // 'Find topics that you like to read',
                         subtitle,
                         style: AppTextStyle.poppinsTextStyle(
                           color: AppTheme.white,

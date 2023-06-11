@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:test_case_dafidea/models/post_model.dart';
 import 'package:test_case_dafidea/theme/constant.dart';
 import 'package:test_case_dafidea/view/widgets/header.dart';
 import 'package:test_case_dafidea/view_model/post_view_model.dart';
@@ -53,7 +52,9 @@ class _FormInputPageState extends State<FormInputPage> {
     );
     await Provider.of<PostViewModel>(context, listen: false)
         .inputPost(titleController.text, bodyController.text);
-    Navigator.pop(context);
+    if (mounted) {
+      Navigator.pop(context);
+    }
   }
 
   @override
@@ -69,16 +70,6 @@ class _FormInputPageState extends State<FormInputPage> {
                 subtitle: 'Create your own post',
                 back: false,
               ),
-              // Container(
-              //   height: 300,
-              //   margin:
-              //       const EdgeInsets.symmetric(horizontal: 52, vertical: 40),
-              //   decoration: const BoxDecoration(
-              //     image: DecorationImage(
-              //       image: AssetImage("lib/assets/logo_logins.png"),
-              //     ),
-              //   ),
-              // ),
               Container(
                 height: 330,
                 width: MediaQuery.of(context).size.width,
@@ -126,27 +117,7 @@ class _FormInputPageState extends State<FormInputPage> {
                     ),
                     TextFormField(
                       controller: bodyController,
-                      // inputFormatters: [
-                      //   FilteringTextInputFormatter.deny(RegExp(r"\s")),
-                      //   LengthLimitingTextInputFormatter(20)
-                      // ],
                       decoration: const InputDecoration(
-                        // suffixIcon: Transform(
-                        //   alignment: Alignment.center,
-                        //   transform: Matrix4.rotationY(math.pi),
-                        //   child: IconButton(
-                        //     onPressed: () {
-                        //       setState(() {
-                        //         _secureText = !_secureText;
-                        //       });
-                        //     },
-                        //     icon: Icon(
-                        //       _secureText
-                        //           ? Icons.visibility_off_outlined
-                        //           : Icons.visibility,
-                        //     ),
-                        //   ),
-                        // ),
                         hintText: "Input body post",
                         hintStyle: TextStyle(
                           color: AppTheme.greyText,
@@ -182,92 +153,7 @@ class _FormInputPageState extends State<FormInputPage> {
                         onPressed: isButtonActive
                             ? () async {
                                 if (formKey.currentState!.validate()) {
-                                  // final postViewModel =
-                                  //     Provider.of<PostViewModel>(context,
-                                  //         listen: false);
-                                  // final createdPost =
                                   loading();
-                                  // await Provider.of<PostViewModel>(context,
-                                  //         listen: false)
-                                  //     .inputPost(titleController.text,
-                                  //         bodyController.text);
-
-                                  // if (mounted) {
-                                  //   final createdPost =
-                                  //       Provider.of<PostViewModel>(context,
-                                  //               listen: false)
-                                  //           .post;
-                                  //   if (createdPost.isNull) {
-                                  //     showSuccessDialog(context, createdPost);
-                                  //   } else {
-                                  //     showFailedDialog(context, createdPost);
-                                  //   }
-                                  // showDialog(
-                                  //     context: context,
-                                  //     builder: (BuildContext context) {
-                                  //       return AlertDialog(
-                                  //         title: Text('Post Created'),
-                                  //         content: Column(
-                                  //           crossAxisAlignment:
-                                  //               CrossAxisAlignment.start,
-                                  //           mainAxisSize: MainAxisSize.min,
-                                  //           children: [
-                                  //             Text(
-                                  //             'ID: ${createdPost ?? 0}'),
-                                  //             Text(
-                                  //                 'Title: ${createdPost?.title}'),
-                                  //             Text(
-                                  //                 'Body: ${createdPost.body}'),
-                                  //           ],
-                                  //         ),
-                                  //         actions: [
-                                  //           TextButton(
-                                  //             onPressed: () {
-                                  //               Navigator.of(context).pop();
-                                  //             },
-                                  //             child: Text('OK'),
-                                  //           ),
-                                  //         ],
-                                  //       );
-                                  //     });
-                                  // showDialog(
-                                  //     context: context,
-                                  //     builder: (BuildContext context, PostModel post) {
-                                  //       return AlertDialog(
-                                  //         title: Text('Success'),
-                                  //         content: Column(
-                                  //           children: [
-                                  //             Text(
-                                  //                 'Post created successfully.'),
-                                  //             // Text()
-                                  //           ],
-                                  //         ),
-                                  //         actions: [
-                                  //           TextButton(
-                                  //               onPressed: () {},
-                                  //               child: Text('OK')),
-                                  //         ],
-                                  //       );
-                                  //     });
-                                  // }
-                                  // Navigator.pushAndRemoveUntil(
-                                  //   context,
-                                  //   PageRouteBuilder(
-                                  //     pageBuilder:
-                                  //         (context, animation1, animation2) =>
-                                  //             HomePage(),
-                                  //     transitionsBuilder: (context, animation1,
-                                  //         animation2, child) {
-                                  //       return FadeTransition(
-                                  //         opacity: animation1,
-                                  //         child: child,
-                                  //       );
-                                  //     },
-                                  //     transitionDuration:
-                                  //         const Duration(milliseconds: 1200),
-                                  //   ),
-                                  //   (route) => false,
-                                  // );
                                 }
                               }
                             : null,

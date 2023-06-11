@@ -33,7 +33,6 @@ class _BottomNavigationViewState extends State<BottomNavigationView> {
       ),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
-          // need rounded corner bottom navbar
           boxShadow: [
             BoxShadow(
               color: AppTheme.gray_2,
@@ -53,19 +52,18 @@ class _BottomNavigationViewState extends State<BottomNavigationView> {
           showUnselectedLabels: false,
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
-          items: <BottomNavigationBarItem>[
+          items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              // icon: Icon(PhosphorIcons.book_open_bold),
               icon: Icon(Icons.home, size: 24, color: AppTheme.gray_2),
               activeIcon:
                   Icon(Icons.home, size: 24, color: AppTheme.primaryTheme),
               label: 'Home',
             ),
-            const BottomNavigationBarItem(
+            BottomNavigationBarItem(
               icon: Icon(Icons.add),
               label: 'Form Input',
             ),
-            const BottomNavigationBarItem(
+            BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: 'Profil',
             ),

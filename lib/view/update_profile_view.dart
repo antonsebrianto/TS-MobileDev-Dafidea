@@ -80,6 +80,15 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                 )),
             TextButton(
                 onPressed: () async {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    },
+                  );
+                  Navigator.pop(context);
                   await Provider.of<UserViewModel>(context, listen: false)
                       .updateUser(
                           emailController.text.isEmpty
@@ -105,10 +114,10 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                               : genderController.text);
 
                   if (mounted) {
+                    Navigator.pop(context);
+                    Navigator.pop(context);
                     await Provider.of<UserViewModel>(context, listen: false)
                         .getUser();
-                    Navigator.pop(context);
-                    Navigator.pop(context);
                   }
                 },
                 child: Text(
@@ -124,34 +133,6 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
       },
     );
   }
-  // void showSuccessDialog(BuildContext context, PostModel post) {
-  //   showDialog(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return AlertDialog(
-  //         title: Text('Success'),
-  //         content: Column(
-  //           crossAxisAlignment: CrossAxisAlignment.start,
-  //           mainAxisSize: MainAxisSize.min,
-  //           children: [
-  //             Text('Post created successfully.'),
-  //             SizedBox(height: 8),
-  //             Text('Title: ${post.title}'),
-  //             Text('Body: ${post.body}'),
-  //           ],
-  //         ),
-  //         actions: [
-  //           TextButton(
-  //             onPressed: () {
-  //               Navigator.of(context).pop();
-  //             },
-  //             child: Text('OK'),
-  //           ),
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -167,16 +148,6 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                 subtitle: 'Update your own profile',
                 back: true,
               ),
-              // Container(
-              //   height: 300,
-              //   margin:
-              //       const EdgeInsets.symmetric(horizontal: 52, vertical: 40),
-              //   decoration: const BoxDecoration(
-              //     image: DecorationImage(
-              //       image: AssetImage("lib/assets/logo_logins.png"),
-              //     ),
-              //   ),
-              // ),
               Padding(
                 padding: const EdgeInsets.only(top: 100),
                 child: Container(
@@ -294,7 +265,6 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                           fontSize: 14,
                         ),
                       ),
-                      // const SizedBox(height: 10),
                       const SizedBox(height: 94),
                       SizedBox(
                         width: double.infinity,
@@ -310,30 +280,6 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                               ? () {
                                   if (formKey.currentState!.validate()) {
                                     editProfile();
-                                    // if (emailController.text.isEmpty) {
-                                    //   await Provider.of<UserViewModel>(context,
-                                    //           listen: false)
-                                    //       .updateUser(
-                                    //           Provider.of<UserViewModel>(
-                                    //                   context)
-                                    //               .user
-                                    //               .email
-                                    //               .toString(),
-                                    //           nameController.text,
-                                    //           genderController.text);
-
-                                    //   if (mounted) {
-                                    //     await Provider.of<UserViewModel>(
-                                    //             context,
-                                    //             listen: false)
-                                    //         .getUser();
-                                    //     Navigator.pop(context);
-                                    //   }
-                                    // }
-                                    // final postViewModel =
-                                    //     Provider.of<PostViewModel>(context,
-                                    //         listen: false);
-                                    // final createdPost =
                                   }
                                 }
                               : null,

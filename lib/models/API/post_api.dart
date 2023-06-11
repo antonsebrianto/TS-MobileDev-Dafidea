@@ -38,14 +38,8 @@ class PostAPI {
             'body': body,
           });
       if (response.statusCode == 201) {
-        print(response.data);
-        // final dataPost = response.data;
-        // List<PostModel> post = List<PostModel>.from(
-        //     dataPost.map((model) => PostModel.fromJson(model)));
-        // final post = PostModel.fromJson(dataPost);
-
+        print('Input post : ${response.data}');
         return PostModel.fromJson(response.data);
-        // return post;
       } else {
         throw Exception('Failed to input data');
       }

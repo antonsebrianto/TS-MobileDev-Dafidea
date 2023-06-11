@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'package:test_case_dafidea/models/post_model.dart';
 import 'package:test_case_dafidea/theme/constant.dart';
@@ -32,25 +31,10 @@ class BottomSheetContent extends StatelessWidget {
                 fontsWeight: FontWeight.w700,
                 color: AppTheme.primaryTheme,
               ),
-              //  const TextStyle(
-              //     fontSize: 15,
-              //     fontWeight: FontWeight.bold,
-              //     color: Colors.deepOrange),
             ),
-            // const SizedBox(
-            //   height: 12,
-            // ),
-            // Text(
-            //   post.subtitle ?? '',
-            //   style: const TextStyle(
-            //       fontSize: 30,
-            //       fontWeight: FontWeight.bold,
-            //       color: Colors.black),
-            // ),
             const SizedBox(
               height: 12,
             ),
-
             const SizedBox(
               height: 20,
             ),

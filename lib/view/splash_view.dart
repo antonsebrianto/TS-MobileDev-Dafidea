@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:intro_slider/slide_object.dart';
+import 'package:test_case_dafidea/theme/constant.dart';
 import 'package:test_case_dafidea/view/bottom_navigation_view.dart';
 import 'package:test_case_dafidea/view/login_view.dart';
 
@@ -18,38 +19,28 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     slides = [
       Slide(
-        title: "Welcome",
-        description: "Slide 1 description",
         backgroundColor: Colors.blue,
-        pathImage: "lib/assets/slide1.png", // Replace with your image path
+        pathImage: "lib/assets/welcome.png",
+        heightImage: 500,
+        widthImage: 500,
       ),
       Slide(
-        title: "Introduction",
-        description: "Slide 2 description",
         backgroundColor: Colors.green,
-        pathImage: "lib/assets/slide2.png", // Replace with your image path
+        pathImage: "lib/assets/introduction.png",
+        heightImage: 500,
+        widthImage: 500,
       ),
       Slide(
-        title: "Get Started",
-        description: "Slide 3 description",
-        backgroundColor: Colors.orange,
-        pathImage: "lib/assets/slide3.png", // Replace with your image path
+        backgroundColor: AppTheme.gradient_1,
+        pathImage: "lib/assets/getstarted.png",
+        heightImage: 500,
+        widthImage: 500,
       ),
     ];
   }
 
-  // void onDonePress() {
-  //   // Perform any necessary actions when the user presses the "Done" button
-  //   // e.g., navigate to the home screen
-  //   checkLogin();
-  //   // Navigator.pushReplacementNamed(context, '/login');
-  // }
-
   Future<void> checkLogin(BuildContext context) async {
-    // SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     User? user = FirebaseAuth.instance.currentUser;
-
-    // final id = sharedPreferences.getString('id');
     if (user?.uid == null) {
       if (mounted) {
         Navigator.pushAndRemoveUntil(

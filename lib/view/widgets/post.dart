@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 import 'package:test_case_dafidea/models/API/post_api.dart';
 import 'package:test_case_dafidea/models/post_model.dart';
@@ -20,38 +19,22 @@ class _PostWidgetsState extends State<PostWidgets> {
   int itemsPerPage = 10;
   bool isLoading = false;
 
-  // final PagingController<int, PostModel> _pagingController =
-  //     PagingController(firstPageKey: 1);
   final ScrollController _pagingController = ScrollController();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    // _pagingController.addPageRequestListener((pageKey) {
     fetchPosts(page, itemsPerPage);
     _pagingController.addListener(() {
       _scrollListener();
     });
-    // });
-    // fetchPosts();
-    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    //   Provider.of<PostViewModel>(context, listen: false).getPosts(page, 10);
-    // });
   }
 
   Future<void> fetchPosts(int pageKey, int perPage) async {
     try {
       posts = await postAPI.getPosts(pageKey, perPage);
       setState(() {});
-      // final isLastPage = posts.length < itemsPerPage;
-      // if (isLastPage) {
-      //   // _pagingController.appendLastPage(posts);
-      // } else {
-      //   final nextPageKey = pageKey + 1;
-      //   // _pagingController.appendPage(posts, nextPageKey);
-      // }
     } catch (error) {
-      // _pagingController.error = error;
+      print('Fetch posts : $error');
     }
   }
 
@@ -69,33 +52,20 @@ class _PostWidgetsState extends State<PostWidgets> {
       print(posts.length);
     }
   }
-  // @override
-  // void dispose() {
-  //   _pagingController.dispose();
-  //   super.dispose();
-  // }
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: MediaQuery.of(context).size.height / 1.32,
-
       child: ListView.builder(
           controller: _pagingController,
-          // padding: EdgeInsets.only(bottom: 20),
-          // item: PagedChildBuilderDelegate<PostModel>(
           itemCount: posts.length + 1,
           itemBuilder: (context, index) {
-            // PostModel post = value.posts[index];
             if (index < posts.length) {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 10, left: 20),
                 child: InkWell(
                     onTap: () async {
-                      // await context
-                      //     .read<CommentViewModel>()
-                      //     .getComments(post.id ?? 0);
-                      // if (mounted) {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -103,7 +73,6 @@ class _PostWidgetsState extends State<PostWidgets> {
                                     post: posts[index],
                                     index: index,
                                   )));
-                      // }
                     },
                     child: Stack(
                       children: [
@@ -168,8 +137,6 @@ class _PostWidgetsState extends State<PostWidgets> {
               return const Center(child: CircularProgressIndicator());
             }
           }),
-      // ),
-      // ),
     );
   }
 }

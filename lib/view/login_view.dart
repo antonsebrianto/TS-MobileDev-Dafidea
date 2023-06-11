@@ -74,8 +74,17 @@ class _LoginPageState extends State<LoginPage> {
     showDialog(
       context: context,
       builder: (context) {
-        return const AlertDialog(
-          title: Text('Incorrect Email'),
+        return AlertDialog(
+          title: Center(
+            child: Text(
+              'Incorrect Email',
+              style: AppTextStyle.poppinsTextStyle(
+                fontSize: 15,
+                fontsWeight: FontWeight.w500,
+                color: AppTheme.black,
+              ),
+            ),
+          ),
         );
       },
     );
@@ -85,8 +94,16 @@ class _LoginPageState extends State<LoginPage> {
     showDialog(
       context: context,
       builder: (context) {
-        return const AlertDialog(
-          title: Text('Incorrect Password'),
+        return AlertDialog(
+          title: Center(
+              child: Text(
+            'Incorrect Password',
+            style: AppTextStyle.poppinsTextStyle(
+              fontSize: 15,
+              fontsWeight: FontWeight.w500,
+              color: AppTheme.black,
+            ),
+          )),
         );
       },
     );
@@ -115,18 +132,6 @@ class _LoginPageState extends State<LoginPage> {
     passController.dispose();
     super.dispose();
   }
-
-  // Future<UserCredential> _signInWithGoogle() async {
-  //   final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-  //   final GoogleSignInAuthentication googleAuth =
-  //       await googleUser!.authentication;
-
-  //   final OAuthCredential credential = GoogleAuthProvider.credential(
-  //     accessToken: googleAuth.accessToken,
-  //     idToken: googleAuth.idToken,
-  //   );
-  //   return await _auth.signInWithCredential(credential);
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -171,16 +176,15 @@ class _LoginPageState extends State<LoginPage> {
                         contentPadding: EdgeInsets.symmetric(horizontal: 12),
                       ),
                       validator: (value) {
-                        // final emailRegex =
-                        //     RegExp(r"^[a-zA-Z0-9_.+-]+@mail\.com$");
+                        final emailRegex =
+                            RegExp(r"^[a-zA-Z0-9_.+-]+@gmail\.com$");
                         if (value == null || value.isEmpty) {
                           return 'Email must be filled';
                         } else if (value.length < 6) {
                           return 'Email must be at least 6 characters';
+                        } else if (!emailRegex.hasMatch(value)) {
+                          return 'Invalid email format';
                         }
-                        // else if (!emailRegex.hasMatch(value)) {
-                        //   return 'Invalid email format';
-                        // }
                         return null;
                       },
                       style: AppTextStyle.poppinsTextStyle(
@@ -253,31 +257,6 @@ class _LoginPageState extends State<LoginPage> {
                             ? () {
                                 if (formKey.currentState!.validate()) {
                                   signIn();
-                                  // UserViewModel().login(emailController.text,
-                                  //     passController.text);
-                                  // if (mounted) {
-                                  //   Navigator.pushAndRemoveUntil(
-                                  //     context,
-                                  //     PageRouteBuilder(
-                                  //       pageBuilder:
-                                  //           (context, animation1, animation2) =>
-                                  //               BottomNavigationView(),
-                                  //       transitionsBuilder: (context,
-                                  //           animation1, animation2, child) {
-                                  //         return FadeTransition(
-                                  //           opacity: animation1,
-                                  //           child: child,
-                                  //         );
-                                  //       },
-                                  //       transitionDuration:
-                                  //           const Duration(milliseconds: 1200),
-                                  //     ),
-                                  //     (route) => false,
-                                  //   );
-                                  // }
-                                  // _signInWithGoogle().then((userCredential) {
-                                  //   print('login berhasil');
-                                  // });
                                 }
                               }
                             : null,
@@ -348,7 +327,6 @@ class _LoginPageState extends State<LoginPage> {
                           }
                         },
                         child: Container(
-                          // padding: const EdgeInsets.all(20),
                           decoration: BoxDecoration(
                             border: Border.all(
                               color: AppTheme.white,
@@ -362,39 +340,6 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
-                      // TextButton(
-                      //   onPressed: () {
-                      //     // Navigator.push(
-                      //     //     context,
-                      //     //     PageRouteBuilder(
-                      //     //       pageBuilder: (context, animation1, animation2) => const CustomerService(),
-                      //     //       transitionsBuilder:
-                      //     //           (context, animation1, animation2, child) {
-                      //     //         return SlideTransition(
-                      //     //           position: Tween<Offset>(
-                      //     //             begin: const Offset(1, 0),
-                      //     //             end: Offset.zero,
-                      //     //           ).animate(animation1),
-                      //     //           child: child,
-                      //     //         );
-                      //     //       },
-                      //     //       transitionDuration:
-                      //     //           const Duration(milliseconds: 490),
-                      //     //     ));
-                      //   },
-                      //   child: const Text(
-                      //     "Google",
-                      //     textAlign: TextAlign.center,
-                      //     style: TextStyle(
-                      //       decoration: TextDecoration.underline,
-                      //       fontFamily: "Poppins",
-                      //       fontWeight: FontWeight.w400,
-                      //       fontStyle: FontStyle.normal,
-                      //       fontSize: 14,
-                      //       color: AppTheme.primaryTheme_2,
-                      //     ),
-                      //   ),
-                      // ),
                     ),
                   ],
                 ),

@@ -19,10 +19,6 @@ class UserAPI {
           'Authorization':
               'Bearer 899194e69e56516012076953034b5e7ef67f3f48bfae2e3e2fc81e043aabcdcb'
         }),
-        // queryParameters: {
-        //   'page': page,
-        //   'per_page': limit,
-        // }
       );
       if (response.statusCode == 200) {
         return UserModel.fromJson(response.data);
@@ -44,14 +40,8 @@ class UserAPI {
           }),
           data: {'email': email, 'name': name, 'gender': gender});
       if (response.statusCode == 200) {
-        print(response.data);
-        // final dataPost = response.data;
-        // List<UserModel> post = List<UserModel>.from(
-        //     dataPost.map((model) => UserModel.fromJson(model)));
-        // final post = UserModel.fromJson(dataPost);
-
+        print('Update user : ${response.data}');
         return UserModel.fromJson(response.data);
-        // return post;
       } else {
         throw Exception('Failed to update data user');
       }

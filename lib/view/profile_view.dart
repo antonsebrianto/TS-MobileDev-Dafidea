@@ -23,11 +23,6 @@ class _ProfilePageState extends State<ProfilePage> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       Provider.of<UserViewModel>(context, listen: false).getUser();
     });
-    // emailController.text = 'kristina.faboulus@mail.com';
-    // telponController.text = '081213476509';
-    // jurusanController.text = 'Seni Rupa';
-    // tahunController.text = '2020/Semester 6';
-    // ipkController.text = '3,85';
   }
 
   void logout() async {
@@ -89,7 +84,6 @@ class _ProfilePageState extends State<ProfilePage> {
       },
     );
 
-    // Navigator.pop(context);
   }
 
   @override
@@ -210,26 +204,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               OutlinedButton(
                 onPressed: () {
-                  // await Provider.of<UserViewModel>(context, listen: false)
-                  //     .logout();
                   logout();
-                  // await Provider.of<UserViewModel>(context, listen: false)
-                  //     .signOut();
-                  // if (mounted) {
-                  //   Navigator.pushReplacement(
-                  //     context,
-                  //     PageRouteBuilder(
-                  //       pageBuilder: (context, animation1, animation2) =>
-                  //           const LoginPage(),
-                  //       transitionsBuilder:
-                  //           (context, animation1, animation2, child) {
-                  //         return FadeTransition(
-                  //             opacity: animation1, child: child);
-                  //       },
-                  //       transitionDuration: const Duration(milliseconds: 300),
-                  //     ),
-                  //   );
-                  // }
                 },
                 style: ElevatedButton.styleFrom(
                     side: const BorderSide(color: AppTheme.primaryTheme),
