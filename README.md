@@ -9,16 +9,21 @@
 ### Fitur Splash Page
 - Pada Splash Page saya menggunakan package intro_slider dengan menampilkan 3 buah slider.
 
-## Fitur Login
+### Fitur Login
 - Pada Fitur Login saya menggunakan Firebase dan terdapat fitur login menggunakan Google dengan mengklik icon google.
 - Apabila melakukan login dengan mengisikan email dan password dapat menggunakan akun berikut ini:
   email : 'test@gmail.com' dan password : '1234567'
   Akun tersebut saya buat pada firebase.
-- Validasi email dengan format @gmail.com dan email harus minimal 6 karakter
+- Validasi email dengan format @gmail.com dan email harus minimal 6 karakter dan terdapat validasi ketika email dan password yang dimasukkan salah
 
-## Fitur GetPost Pada Halaman Homepage
+### Fitur GetPost Pada Halaman Homepage
 - Pada halaman homepage saya melakukan fetchAPI getPost sesuai dengan API dari gorest.co.in
 - Disini saya juga memberikan pagination dari getPost, apabila dilakukan scroll maka data post akan otomatis bertambah
 - Apabila salah satu post di klik maka akan berpindah halaman ke halaman detail post, yang dimana menampilkan data dari post yang sebelumnya di klik secara lebih rinci
+
+### Fitur Form Input 
+- Pada halaman form input dapat menambahkan post dengan memanggil API dari gorest.co.in
+- Apabila berhasil menambahkan post maka akan tampil dialog 'Post created succesfully', sedangkan apabila gagal menambahkan post maka akan tampil dialog 'Failed to create post'
+- Validasi ketika input form title dan body belum di isi maka tombol submit tidak dapat di klik, dan terdapat validasi pada title yang mengharuskan title harus minimal 6 karakter dan pada body mengharuskan minimal 20 karakter
 
 
