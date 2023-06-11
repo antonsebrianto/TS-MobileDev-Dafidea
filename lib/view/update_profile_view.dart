@@ -175,12 +175,6 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                           contentPadding:
                               const EdgeInsets.symmetric(horizontal: 12),
                         ),
-                        // validator: (value) {
-                        //   if (value!.length < 6) {
-                        //     return 'Name must be at least 6 characters';
-                        //   }
-                        //   return null;
-                        // },
                         style: AppTextStyle.poppinsTextStyle(
                           fontSize: 14,
                         ),
@@ -194,27 +188,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                       ),
                       TextFormField(
                         controller: emailController,
-                        // inputFormatters: [
-                        //   FilteringTextInputFormatter.deny(RegExp(r"\s")),
-                        //   LengthLimitingTextInputFormatter(20)
-                        // ],
                         decoration: InputDecoration(
-                          // suffixIcon: Transform(
-                          //   alignment: Alignment.center,
-                          //   transform: Matrix4.rotationY(math.pi),
-                          //   child: IconButton(
-                          //     onPressed: () {
-                          //       setState(() {
-                          //         _secureText = !_secureText;
-                          //       });
-                          //     },
-                          //     icon: Icon(
-                          //       _secureText
-                          //           ? Icons.visibility_off_outlined
-                          //           : Icons.visibility,
-                          //     ),
-                          //   ),
-                          // ),
                           hintText: user.email,
                           hintStyle: const TextStyle(
                             color: AppTheme.greyText,
@@ -228,12 +202,6 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                         style: AppTextStyle.poppinsTextStyle(
                           fontSize: 14,
                         ),
-                        // validator: (value) {
-                        //   if (value!.length < 6) {
-                        //     return 'Email must be at least 6 characters';
-                        //   }
-                        //   return null;
-                        // },
                       ),
                       const SizedBox(height: 10),
                       Text(
@@ -255,12 +223,6 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
                           contentPadding:
                               const EdgeInsets.symmetric(horizontal: 12),
                         ),
-                        // validator: (value) {
-                        //   if (value!.length < 6) {
-                        //     return 'Name must be at least 6 characters';
-                        //   }
-                        //   return null;
-                        // },
                         style: AppTextStyle.poppinsTextStyle(
                           fontSize: 14,
                         ),

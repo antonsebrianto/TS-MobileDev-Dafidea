@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:test_case_dafidea/models/API/user_api.dart';
 import 'package:test_case_dafidea/models/user_model.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 enum DataState {
   initial,
@@ -40,10 +41,20 @@ class UserViewModel extends ChangeNotifier {
       _user = dataUser;
       _state = DataState.loaded;
       notifyListeners();
+      Fluttertoast.showToast(
+        msg: 'User updated successfully',
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.green,
+      );
     } catch (e) {
       _state = DataState.error;
+      notifyListeners();
+      Fluttertoast.showToast(
+        msg: 'Failed to update user',
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+      );
     }
-    notifyListeners();
   }
 
   Future<void> signInWithGoogle() async {
