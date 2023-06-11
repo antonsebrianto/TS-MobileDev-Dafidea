@@ -26,4 +26,7 @@
 - Apabila berhasil menambahkan post maka akan tampil dialog 'Post created succesfully', sedangkan apabila gagal menambahkan post maka akan tampil dialog 'Failed to create post'
 - Validasi ketika input form title dan body belum di isi maka tombol submit tidak dapat di klik, dan terdapat validasi pada title yang mengharuskan title harus minimal 6 karakter dan pada body mengharuskan minimal 20 karakter
 
-
+### Fitur Edit Data
+- Pada halaman profil menampilkan data user sesuai dengan API dari gorest.co.in
+- Apabila mengklik edit profile maka akan berpindah halaman ke halaman edit user profile
+- Pada halaman edit user profile dapat mengedit salah satu dari 3 form input yaitu nama, email dan gender. Sehingga dapat mengupdate user dari salah 1 form input yang mau dirubah
