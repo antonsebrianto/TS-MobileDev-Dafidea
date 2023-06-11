@@ -30,3 +30,9 @@
 - Pada halaman profil menampilkan data user sesuai dengan API dari gorest.co.in
 - Apabila mengklik edit profile maka akan berpindah halaman ke halaman edit user profile
 - Pada halaman edit user profile dapat mengedit salah satu dari 3 form input yaitu nama, email dan gender. Sehingga dapat mengupdate user dari salah 1 form input yang mau dirubah
+
+### Fitur Logout
+- Fitur logout terdapat pada halaman profil
+
+### Fitur Save User
+- Apabila user sudah melakukan login lalu me restart aplikasi atau membuka kembali aplikasi yang telah ditutup maka akan langsung otomatis ke halaman homepage setelah halaman splash page. Fitur ini tidak berlaku ketika user telah melakukan logout
